@@ -10,4 +10,4 @@ each of which can be viewed in a carousel.
 
 ## Deployed Site
 
-Check out [this site](https://samsprofessionalcoding.github.io/ai-se_project_flashcards) on GitHub Pages.
+Check out [this site](https://SamsProfessionalCoding.github.io/ai-se_project_flashcards) on GitHub Pages.
