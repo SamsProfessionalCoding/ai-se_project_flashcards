@@ -1,22 +1,22 @@
-.home {
+.gallery {
   margin-top: 0;
 }
 
-.home__title {
+.gallery__title {
   font-weight: 700;
   font-size: 40px;
   margin-top: 0;
   margin-bottom: 40px;
 }
 
-.home__list {
+.gallery__list {
   display: contents;
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
 
-.home__new-deck-btn {
+.gallery__new-card-btn {
   display: flex;
   border-radius: 20px;
   background-color: #d9d9d9;
@@ -31,7 +31,7 @@
   border: none;
 }
 
-.home__new-deck-btn:hover {
+.gallery__new-card-btn:hover {
   background-color: #c5c5c5;
   color: #1a1a1a;
 }

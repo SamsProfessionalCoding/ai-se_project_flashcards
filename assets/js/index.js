@@ -5,29 +5,29 @@ import { renderDeckView } from "./deckView.js";
 
 // Variable declaration
 const deckTemplate = document.querySelector("#deck__template");
-const deckList = document.querySelector(".home__list");
+const deckList = document.querySelector(".gallery__list");
 
 function createDeckEl(item) {
   const deckCard = deckTemplate.content.firstElementChild.cloneNode(true);
 
   // Link this card to its deck's personal URL.
   deckCard.dataset.deckId = item.id;
-  const deckLink = deckCard.querySelector(".deck-preview__link");
+  const deckLink = deckCard.querySelector(".card__link");
   deckLink.href = `#deck/${item.id}`;
 
-  deckCard.querySelector(".deck-preview__title").textContent = item.name;
-  deckCard.querySelector(".deck-preview__count").textContent =
+  deckCard.querySelector(".card__title").textContent = item.name;
+  deckCard.querySelector(".card__count").textContent =
     `${item.cards.length} cards`;
 
   // Adjust colors according to their hexcodes.
   const colorName = hexToString(item.color);
 
   if (colorName) {
-    deckCard.classList.add(`deck-preview_color_${colorName}`);
+    deckCard.classList.add(`card_color_${colorName}`);
   }
 
   // Delete button for each card and functionality
-  const deleteButton = deckCard.querySelector(".deck-preview__delete-btn");
+  const deleteButton = deckCard.querySelector(".card__delete-btn");
   deleteButton.addEventListener("click", () => {
     const deckIndex = decks.indexOf(item);
     if (deckIndex !== -1) {
@@ -62,7 +62,7 @@ function updateDeckCardCount(deck) {
   const deckCard = [...deckList.children].find(
     (element) => element.dataset.deckId === deck.id,
   );
-  const count = deckCard?.querySelector(".deck-preview__count");
+  const count = deckCard?.querySelector(".card__count");
 
   if (count) {
     count.textContent = `${deck.cards.length} cards`;

@@ -42,18 +42,18 @@
       </nav>
     </header>
     <main id="page__main-content" class="page__main-content">
-      <section id="home" class="home">
-        <h2 class="home__title">My Decks</h2>
+      <section id="home" class="gallery">
+        <h2 class="gallery__title">My Decks</h2>
         <div class="wrapping-row">
-          <ul class="home__list">
+          <ul class="gallery__list">
             <template id="deck__template">
-              <li class="deck-preview">
-                <a href="#" class="deck-preview__link"></a>
-                <h3 class="deck-preview__title"></h3>
-                <div class="deck-preview__row">
-                  <h4 class="deck-preview__count"></h4>
+              <li class="card">
+                <a href="#" class="card__link"></a>
+                <h3 class="card__title"></h3>
+                <div class="card__row">
+                  <h4 class="card__count"></h4>
                   <button
-                    class="deck-preview__delete-btn"
+                    class="card__delete-btn"
                     aria-label="Delete this deck"
                     type="button"
                   >
@@ -67,7 +67,7 @@
             </template>
           </ul>
           <button
-            class="home__new-deck-btn"
+            class="gallery__new-card-btn"
             aria-label="Create new deck of flashcards."
             type="button"
           >
