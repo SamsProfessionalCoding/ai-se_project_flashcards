@@ -2,14 +2,12 @@ import { hexToString } from "./colors.js";
 
 const deckView = document.querySelector("#deck-view");
 const title = deckView.querySelector(".gallery__title");
-const practiceButton = deckView.querySelector(".gallery__practice-btn");
 const cardsList = deckView.querySelector(".gallery__list");
 const emptyMessage = deckView.querySelector(".gallery__empty");
 const cardTemplate = document.querySelector("#flashcard-template");
 
 function renderDeckView(deck, onDeleteCard) {
   title.textContent = deck.name;
-  practiceButton.href = `#carousel/${deck.id}`;
   cardsList.replaceChildren();
   emptyMessage.hidden = deck.cards.length > 0;
   const colorName = hexToString(deck.color);
@@ -17,8 +15,8 @@ function renderDeckView(deck, onDeleteCard) {
   deck.cards.forEach((card) => {
     const cardElement = cardTemplate.content.firstElementChild.cloneNode(true);
     const cardText = cardElement.querySelector(".card__title");
-    const flipButton = cardElement.querySelector(".card__flip-btn");
-    const deleteButton = cardElement.querySelector(".card__delete-btn");
+    const flipButton = cardElement.querySelector(".card__btn_type_flip");
+    const deleteButton = cardElement.querySelector(".card__btn_type_delete");
     let showingAnswer = false;
 
     cardText.textContent = card.question;

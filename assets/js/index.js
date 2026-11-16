@@ -1,7 +1,7 @@
 import { decks, getDeckByID } from "./decks.js";
 import { hexToString } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
-import { renderDeckView } from "./deckView.js";
+import { renderDeckView } from "./deck-view.js";
 
 // Variable declaration
 const deckTemplate = document.querySelector("#deck__template");
@@ -27,7 +27,7 @@ function createDeckEl(item) {
   }
 
   // Delete button for each card and functionality
-  const deleteButton = deckCard.querySelector(".card__delete-btn");
+  const deleteButton = deckCard.querySelector(".card__btn_type_delete");
   deleteButton.addEventListener("click", () => {
     const deckIndex = decks.indexOf(item);
     if (deckIndex !== -1) {
@@ -57,6 +57,15 @@ const mainContent = document.querySelector("#page__main-content");
 const carouselView = document.querySelector(".carousel");
 const deckDetailView = document.querySelector("#deck-view");
 const notFoundView = document.querySelector("#not-found");
+const practiceButton = deckDetailView.querySelector(".gallery__practice-btn");
+let currentDeck = null;
+
+practiceButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  if (currentDeck) {
+    window.location.hash = `#carousel/${currentDeck.id}`;
+  }
+});
 
 function updateDeckCardCount(deck) {
   const deckCard = [...deckList.children].find(
@@ -87,7 +96,7 @@ function renderRoute() {
   const isDeckRoute = hash.startsWith("deck/");
 
   // Find the deck object whose ID matches the one in the URL.
-  let currentDeck;
+  currentDeck = null;
 
   if (isCarouselRoute || isDeckRoute) {
     const currentDeckID = hash.split("/")[1];

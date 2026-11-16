@@ -53,15 +53,10 @@
                 <div class="card__row">
                   <h4 class="card__count"></h4>
                   <button
-                    class="card__delete-btn"
+                    class="card__btn card__btn_type_delete"
                     aria-label="Delete this deck"
                     type="button"
-                  >
-                    <img
-                      src="./assets/images/delete.svg"
-                      alt="a trash/delete button for a deck"
-                    />
-                  </button>
+                  ></button>
                 </div>
               </li>
             </template>
@@ -75,18 +70,18 @@
           </button>
         </div>
       </section>
-      <section id="deck-view" class="gallery">
+      <section id="deck-view" class="gallery gallery_type_deck-view">
         <div class="gallery__header">
           <h2 class="gallery__title"></h2>
           <div class="gallery__actions">
-            <button class="gallery__new-card-btn" type="button">
-              + New Card
-            </button>
             <a class="gallery__practice-btn" href="#">Practice</a>
           </div>
         </div>
         <div class="wrapping-row">
           <ul class="gallery__list wrapping-row__display-contents"></ul>
+          <button class="gallery__new-card-btn" type="button">
+            + New Card
+          </button>
         </div>
         <p class="gallery__empty" hidden>This deck has no cards yet.</p>
         <template id="flashcard-template">
@@ -94,20 +89,16 @@
             <h3 class="card__title"></h3>
             <div class="card__row">
               <button
-                class="card__flip-btn"
+                class="card__btn card__btn_type_flip"
                 type="button"
                 aria-label="Show answer"
                 aria-pressed="false"
-              >
-                <img src="./assets/images/flip.svg" alt="" />
-              </button>
+              ></button>
               <button
-                class="card__delete-btn"
+                class="card__btn card__btn_type_delete"
                 type="button"
                 aria-label="Delete this card"
-              >
-                <img src="./assets/images/delete.svg" alt="" />
-              </button>
+              ></button>
             </div>
           </li>
         </template>
