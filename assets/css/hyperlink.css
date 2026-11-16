@@ -1,0 +1,13 @@
+.hyperlink {
+  text-decoration: none;
+  cursor: pointer;
+  color: #1a1a1a;
+}
+
+.hyperlink:hover {
+  text-decoration: underline;
+}
+
+.hyperlink:visited {
+  color: #1a1a1a;
+}

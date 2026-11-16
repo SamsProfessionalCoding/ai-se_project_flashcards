@@ -6,7 +6,7 @@ each of which can be viewed in a carousel.
 
 ## Features
 
-The application features a list of decks each with their own lessons that when clicked display 10 flashcards for their subject. A carousel view is then pulled up and the user can switch with arrow buttons (left and right) between flashcards, and can hit the flip button to display the answer to the flashcards.
+The application features a list of decks, each containing lessons for its subject. Opening a deck displays its cards, where users can flip cards to reveal answers or delete cards. The Practice button opens a carousel where users can switch between cards with the left and right arrow buttons and flip a card to display its answer.
 
 ## Technologies used
 

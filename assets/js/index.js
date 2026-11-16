@@ -1,33 +1,42 @@
 import { decks, getDeckByID } from "./decks.js";
 import { hexToString } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
+import { renderDeckView } from "./deckView.js";
 
 // Variable declaration
 const deckTemplate = document.querySelector("#deck__template");
-const deckList = document.querySelector(".decks__list");
+const deckList = document.querySelector(".home__list");
 
 function createDeckEl(item) {
   const deckCard = deckTemplate.content.firstElementChild.cloneNode(true);
 
   // Link this card to its deck's personal URL.
-  const deckLink = deckCard.querySelector(".deck__link");
-  deckLink.href = `#carousel/${item.id}`;
+  deckCard.dataset.deckId = item.id;
+  const deckLink = deckCard.querySelector(".deck-preview__link");
+  deckLink.href = `#deck/${item.id}`;
 
-  deckCard.querySelector(".deck__title").textContent = item.name;
-  deckCard.querySelector(".deck__count").textContent =
+  deckCard.querySelector(".deck-preview__title").textContent = item.name;
+  deckCard.querySelector(".deck-preview__count").textContent =
     `${item.cards.length} cards`;
 
   // Adjust colors according to their hexcodes.
   const colorName = hexToString(item.color);
 
   if (colorName) {
-    deckCard.classList.add(`deck_color_${colorName}`);
+    deckCard.classList.add(`deck-preview_color_${colorName}`);
   }
 
   // Delete button for each card and functionality
-  const deleteButton = deckCard.querySelector(".deck__delete-btn");
+  const deleteButton = deckCard.querySelector(".deck-preview__delete-btn");
   deleteButton.addEventListener("click", () => {
+    const deckIndex = decks.indexOf(item);
+    if (deckIndex !== -1) {
+      decks.splice(deckIndex, 1);
+    }
     deckCard.remove();
+    if (window.location.hash === `#deck/${item.id}`) {
+      window.location.hash = "#home";
+    }
   });
   return deckCard;
 }
@@ -46,29 +55,49 @@ decks.forEach(renderDeckEl);
 const homeView = document.querySelector("#home");
 const mainContent = document.querySelector("#page__main-content");
 const carouselView = document.querySelector(".carousel");
+const deckDetailView = document.querySelector("#deck-view");
 const notFoundView = document.querySelector("#not-found");
+
+function updateDeckCardCount(deck) {
+  const deckCard = [...deckList.children].find(
+    (element) => element.dataset.deckId === deck.id,
+  );
+  const count = deckCard?.querySelector(".deck-preview__count");
+
+  if (count) {
+    count.textContent = `${deck.cards.length} cards`;
+  }
+}
+
+function deleteCard(deck, card) {
+  const cardIndex = deck.cards.indexOf(card);
+  if (cardIndex !== -1) {
+    deck.cards.splice(cardIndex, 1);
+  }
+
+  updateDeckCardCount(deck);
+  renderDeckView(deck, deleteCard);
+}
 
 function renderRoute() {
   // The hash includes "#", so remove it with slice(1) and then check its route.
   const hash = window.location.hash.slice(1);
   const isHomeRoute = hash === "" || hash === "home";
   const isCarouselRoute = hash.startsWith("carousel/");
+  const isDeckRoute = hash.startsWith("deck/");
 
   // Find the deck object whose ID matches the one in the URL.
-  // Note that a hash such as "carousel/html-basics", just "html-basics"
-  // is found.
   let currentDeck;
 
-  if (isCarouselRoute) {
+  if (isCarouselRoute || isDeckRoute) {
     const currentDeckID = hash.split("/")[1];
     currentDeck = getDeckByID(currentDeckID);
   }
 
-  // The carousel route is valid only if a valid deck was found.
+  // A deck route is valid only if a valid deck was found.
   const showCarousel = isCarouselRoute && currentDeck;
+  const showDeckView = isDeckRoute && currentDeck;
 
-  // Select showCarousel, if it is true (valid deck found) add the spacing class,
-  //  otherwise remove it.
   if (showCarousel) {
     mainContent.classList.add("page__main-content_location_carousel");
   } else {
@@ -78,12 +107,16 @@ function renderRoute() {
   // The styles work with existing CSS for .not-found.
   homeView.style.display = isHomeRoute ? "" : "none";
   carouselView.style.display = showCarousel ? "flex" : "none";
-  notFoundView.style.display = isHomeRoute || showCarousel ? "none" : "";
+  deckDetailView.style.display = showDeckView ? "" : "none";
+  notFoundView.style.display =
+    isHomeRoute || showCarousel || showDeckView ? "none" : "";
 
-  // Give selected deck (currentIndex number) the carousel renderer from
-  // carousel.js
   if (showCarousel) {
     renderCarouselView(currentDeck);
+  }
+
+  if (showDeckView) {
+    renderDeckView(currentDeck, deleteCard);
   }
 }
 

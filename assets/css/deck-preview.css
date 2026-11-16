@@ -1,0 +1,85 @@
+.deck-preview {
+  background-color: #64d583;
+  border-radius: 20px;
+  max-width: 325px;
+  width: 100%;
+  height: 205px;
+  padding: 20px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.2;
+  color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.deck-preview__link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.deck-preview_color_green {
+  background-color: #64d583;
+}
+
+.deck-preview_color_blue {
+  background-color: #91a8f9;
+}
+
+.deck-preview_color_pink {
+  background-color: #ee92d7;
+}
+
+.deck-preview_color_purple {
+  background-color: #aa8ef0;
+}
+
+.deck-preview_color_orange {
+  background-color: #ee955e;
+}
+
+.deck-preview_color_yellow {
+  background-color: #f5d770;
+}
+
+.deck-preview__title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+.deck-preview__row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.deck-preview__count {
+  margin: 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.deck-preview__delete-btn {
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  opacity: 50%;
+  z-index: 2;
+}
+
+.deck-preview__delete-btn:hover {
+  opacity: 100%;
+  cursor: pointer;
+}

@@ -28,6 +28,22 @@ function renderCarouselView(deck) {
   }
 
   function updateDisplay() {
+    if (deck.cards.length === 0) {
+      titleEl.textContent = `${deck.name} · 0/0`;
+      cardText.textContent = "This deck has no cards yet.";
+      card.classList.add("carousel__card_color_white");
+      leftBtn.disabled = true;
+      leftBtn.classList.add("carousel__btn_disabled");
+      rightBtn.disabled = true;
+      rightBtn.classList.add("carousel__btn_disabled");
+      flipBtn.disabled = true;
+      flipBtn.classList.add("carousel__btn_disabled");
+      return;
+    }
+
+    flipBtn.disabled = false;
+    flipBtn.classList.remove("carousel__btn_disabled");
+
     // The current card is linked to its index number
     const currentCard = deck.cards[currentIndex];
 

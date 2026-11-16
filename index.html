@@ -19,8 +19,7 @@
       rel="stylesheet"
     />
     <link rel="icon" href="favicon.ico" />
-    <link rel="stylesheet" href="assets/vendor/normalize.css" />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/index.css" />
     <title>Tripleten Flashcard Application</title>
   </head>
   <body class="page">
@@ -43,18 +42,18 @@
       </nav>
     </header>
     <main id="page__main-content" class="page__main-content">
-      <section id="home" class="decks">
-        <h2 class="decks__title">My Decks</h2>
+      <section id="home" class="home">
+        <h2 class="home__title">My Decks</h2>
         <div class="wrapping-row">
-          <ul class="decks__list">
+          <ul class="home__list">
             <template id="deck__template">
-              <li class="deck">
-                <a href="#" class="deck__link"></a>
-                <h3 class="deck__title"></h3>
-                <div class="deck__row">
-                  <h4 class="deck__count"></h4>
+              <li class="deck-preview">
+                <a href="#" class="deck-preview__link"></a>
+                <h3 class="deck-preview__title"></h3>
+                <div class="deck-preview__row">
+                  <h4 class="deck-preview__count"></h4>
                   <button
-                    class="deck__delete-btn"
+                    class="deck-preview__delete-btn"
                     aria-label="Delete this deck"
                     type="button"
                   >
@@ -68,13 +67,48 @@
             </template>
           </ul>
           <button
-            class="decks__new-deck-btn"
+            class="home__new-deck-btn"
             aria-label="Create new deck of flashcards."
             type="button"
           >
             + New Deck
           </button>
         </div>
+      </section>
+      <section id="deck-view" class="deck-view">
+        <div class="deck-view__header">
+          <h2 class="deck-view__title"></h2>
+          <div class="deck-view__actions">
+            <button class="deck-view__new-card-btn" type="button">
+              + New Card
+            </button>
+            <a class="deck-view__practice-btn" href="#">Practice</a>
+          </div>
+        </div>
+        <ul class="deck-view__cards"></ul>
+        <p class="deck-view__empty" hidden>This deck has no cards yet.</p>
+        <template id="card__template">
+          <li class="deck-view__card">
+            <p class="deck-view__card-text"></p>
+            <div class="deck-view__card-actions">
+              <button
+                class="deck-view__card-btn deck-view__card-btn_type_flip"
+                type="button"
+                aria-label="Show answer"
+                aria-pressed="false"
+              >
+                <img src="./assets/images/flip.svg" alt="" />
+              </button>
+              <button
+                class="deck-view__card-btn deck-view__card-btn_type_delete"
+                type="button"
+                aria-label="Delete this card"
+              >
+                <img src="./assets/images/delete.svg" alt="" />
+              </button>
+            </div>
+          </li>
+        </template>
       </section>
       <section id="carousel" class="carousel">
         <h2 class="carousel__title">HTML Tags Deck &middot; 1/10</h2>

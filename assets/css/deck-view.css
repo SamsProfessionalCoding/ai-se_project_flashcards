@@ -1,0 +1,125 @@
+.deck-view__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.deck-view__title {
+  font-weight: 700;
+  font-size: 40px;
+  margin: 0;
+}
+
+.deck-view__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.deck-view__new-card-btn,
+.deck-view__practice-btn {
+  border: none;
+  border-radius: 12px;
+  padding: 14px 20px;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.deck-view__new-card-btn {
+  background-color: #d9d9d9;
+  color: #1a1a1a80;
+}
+
+.deck-view__practice-btn {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+.deck-view__practice-btn:visited {
+  color: #fff;
+}
+
+.deck-view__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.deck-view__card {
+  min-height: 205px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: var(--deck-color, #64d583);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  transition: background-color 150ms ease;
+}
+
+.deck-view__card_flipped {
+  background-color: #fff;
+}
+
+.deck-view__card-text {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.deck-view__card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.deck-view__card-btn {
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  border: none;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.deck-view__card-btn:hover {
+  background-color: #ececec;
+}
+
+.deck-view__card-btn img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.deck-view__empty {
+  padding: 28px;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #1a1a1a80;
+  text-align: center;
+  font-size: 18px;
+}
+
+@media (max-width: 700px) {
+  .deck-view__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .deck-view__title {
+    font-size: 32px;
+  }
+}
