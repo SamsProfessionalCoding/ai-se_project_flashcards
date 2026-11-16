@@ -45,7 +45,7 @@
       <section id="home" class="gallery">
         <h2 class="gallery__title">My Decks</h2>
         <div class="wrapping-row">
-          <ul class="gallery__list">
+          <ul class="gallery__list wrapping-row__display-contents">
             <template id="deck__template">
               <li class="card">
                 <a href="#" class="card__link"></a>
@@ -75,24 +75,26 @@
           </button>
         </div>
       </section>
-      <section id="deck-view" class="deck-view">
-        <div class="deck-view__header">
-          <h2 class="deck-view__title"></h2>
-          <div class="deck-view__actions">
-            <button class="deck-view__new-card-btn" type="button">
+      <section id="deck-view" class="gallery">
+        <div class="gallery__header">
+          <h2 class="gallery__title"></h2>
+          <div class="gallery__actions">
+            <button class="gallery__new-card-btn" type="button">
               + New Card
             </button>
-            <a class="deck-view__practice-btn" href="#">Practice</a>
+            <a class="gallery__practice-btn" href="#">Practice</a>
           </div>
         </div>
-        <ul class="deck-view__cards"></ul>
-        <p class="deck-view__empty" hidden>This deck has no cards yet.</p>
-        <template id="card__template">
-          <li class="deck-view__card">
-            <p class="deck-view__card-text"></p>
-            <div class="deck-view__card-actions">
+        <div class="wrapping-row">
+          <ul class="gallery__list wrapping-row__display-contents"></ul>
+        </div>
+        <p class="gallery__empty" hidden>This deck has no cards yet.</p>
+        <template id="flashcard-template">
+          <li class="card">
+            <h3 class="card__title"></h3>
+            <div class="card__row">
               <button
-                class="deck-view__card-btn deck-view__card-btn_type_flip"
+                class="card__flip-btn"
                 type="button"
                 aria-label="Show answer"
                 aria-pressed="false"
@@ -100,7 +102,7 @@
                 <img src="./assets/images/flip.svg" alt="" />
               </button>
               <button
-                class="deck-view__card-btn deck-view__card-btn_type_delete"
+                class="card__delete-btn"
                 type="button"
                 aria-label="Delete this card"
               >

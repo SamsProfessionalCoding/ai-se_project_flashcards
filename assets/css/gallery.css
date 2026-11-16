@@ -2,6 +2,20 @@
   margin-top: 0;
 }
 
+.gallery__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.gallery__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .gallery__title {
   font-weight: 700;
   font-size: 40px;
@@ -10,10 +24,13 @@
 }
 
 .gallery__list {
-  display: contents;
   margin: 0;
   padding: 0;
   list-style-type: none;
+}
+
+.gallery__header .gallery__title {
+  margin-bottom: 0;
 }
 
 .gallery__new-card-btn {
@@ -34,4 +51,39 @@
 .gallery__new-card-btn:hover {
   background-color: #c5c5c5;
   color: #1a1a1a;
+}
+
+.gallery__practice-btn {
+  border-radius: 12px;
+  padding: 14px 20px;
+  background-color: #1a1a1a;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.gallery__practice-btn:visited {
+  color: #fff;
+}
+
+.gallery__empty {
+  padding: 28px;
+  border-radius: 20px;
+  background-color: #fff;
+  color: #1a1a1a80;
+  text-align: center;
+  font-size: 18px;
+}
+
+@media (max-width: 700px) {
+  .gallery__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .gallery__header .gallery__title {
+    font-size: 32px;
+  }
 }
