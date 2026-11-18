@@ -24,3 +24,15 @@
 .header__link:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 700px) {
+  .header {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .header__title,
+  .header__link {
+    font-size: 20px;
+  }
+}
