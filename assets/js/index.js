@@ -59,7 +59,15 @@ const deckDetailView = document.querySelector("#deck-view");
 const notFoundView = document.querySelector("#not-found");
 const page = document.querySelector(".page");
 const practiceButton = deckDetailView.querySelector(".gallery__practice-btn");
+const views = [homeView, carouselView, deckDetailView, notFoundView];
 let currentDeck = null;
+
+function showView(currentSection, display) {
+  views.forEach((view) => {
+    view.style.display = "none";
+  });
+  currentSection.style.display = display;
+}
 
 practiceButton.addEventListener("click", (event) => {
   event.preventDefault();
@@ -120,12 +128,15 @@ function renderRoute() {
     mainContent.classList.remove("page__main-content_location_carousel");
   }
 
-  // The styles work with existing CSS for .not-found.
-  homeView.style.display = isHomeRoute ? "" : "none";
-  carouselView.style.display = showCarousel ? "flex" : "none";
-  deckDetailView.style.display = showDeckView ? "" : "none";
-  notFoundView.style.display =
-    isHomeRoute || showCarousel || showDeckView ? "none" : "";
+  if (isHomeRoute) {
+    showView(homeView, "");
+  } else if (showCarousel) {
+    showView(carouselView, "flex");
+  } else if (showDeckView) {
+    showView(deckDetailView, "");
+  } else {
+    showView(notFoundView, "");
+  }
 
   if (showCarousel) {
     renderCarouselView(currentDeck);
