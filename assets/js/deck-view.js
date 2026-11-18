@@ -1,4 +1,5 @@
 import { hexToString } from "./colors.js";
+import { openModal } from "./modal.js";
 
 const deckView = document.querySelector("#deck-view");
 const title = deckView.querySelector(".gallery__title");
@@ -36,8 +37,11 @@ function renderDeckView(deck, onDeleteCard) {
       );
     });
 
+    // canceling leaves the card unchanged, and deletion calls the proper function (deletion happens).
     deleteButton.addEventListener("click", () => {
-      onDeleteCard(deck, card);
+      openModal(() => {
+        onDeleteCard(deck, card);
+      });
     });
 
     cardsList.append(cardElement);

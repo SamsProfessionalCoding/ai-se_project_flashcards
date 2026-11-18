@@ -2,6 +2,7 @@ import { decks, getDeckByID } from "./decks.js";
 import { hexToString } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deck-view.js";
+import { openModal } from "./modal.js";
 
 // Variable declaration
 const deckTemplate = document.querySelector("#deck__template");
@@ -26,17 +27,22 @@ function createDeckEl(item) {
     deckCard.classList.add(`card_color_${colorName}`);
   }
 
-  // Delete button for each card and functionality
+  // Delete button for modal update including deckIndex
   const deleteButton = deckCard.querySelector(".card__btn_type_delete");
   deleteButton.addEventListener("click", () => {
-    const deckIndex = decks.indexOf(item);
-    if (deckIndex !== -1) {
-      decks.splice(deckIndex, 1);
-    }
-    deckCard.remove();
-    if (window.location.hash === `#deck/${item.id}`) {
-      window.location.hash = "#home";
-    }
+    openModal(() => {
+      const deckIndex = decks.indexOf(item);
+      if (deckIndex !== -1) {
+        decks.splice(deckIndex, 1);
+      }
+
+      deckCard.remove();
+
+      // hash route to return home
+      if (window.location.hash === `#deck/${item.id}`) {
+        window.location.hash = "#home";
+      }
+    });
   });
   return deckCard;
 }
