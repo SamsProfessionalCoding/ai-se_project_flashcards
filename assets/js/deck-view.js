@@ -7,6 +7,7 @@ const emptyMessage = deckView.querySelector(".gallery__empty");
 const cardTemplate = document.querySelector("#flashcard-template");
 
 function renderDeckView(deck, onDeleteCard) {
+  document.querySelector(".page").classList.remove("page_no-mobile-bar");
   title.textContent = deck.name;
   cardsList.replaceChildren();
   emptyMessage.hidden = deck.cards.length > 0;

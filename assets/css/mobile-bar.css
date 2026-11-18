@@ -11,12 +11,20 @@
     pointer-events: none;
   }
 
+  .page_no-mobile-bar::after {
+    display: none;
+  }
+
   .footer {
     position: fixed;
     z-index: 5;
     right: 20px;
     bottom: 20px;
     left: 20px;
+  }
+
+  .page_no-mobile-bar .footer {
+    position: static;
   }
 
   .gallery__new-card-btn,

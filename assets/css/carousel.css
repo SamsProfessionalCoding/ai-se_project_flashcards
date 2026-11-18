@@ -11,11 +11,27 @@
   color: #1a1a1a80;
 }
 
-.carousel__row {
-  display: flex;
-  flex-direction: row;
+.carousel__grid {
+  display: grid;
+  grid-template-columns: 44px 440px 44px;
+  grid-template-areas:
+    "left card right"
+    ". flip .";
+  column-gap: 20px;
+  row-gap: 0;
   align-items: center;
-  gap: 20px;
+}
+
+.carousel__btn_type_left {
+  grid-area: left;
+}
+
+.carousel__card {
+  grid-area: card;
+}
+
+.carousel__btn_type_right {
+  grid-area: right;
 }
 
 .carousel__card {
@@ -100,6 +116,8 @@
 }
 
 .carousel__btn_type_flip {
+  grid-area: flip;
+  justify-self: center;
   margin-top: 24px;
 }
 
@@ -116,8 +134,18 @@
 }
 
 @media (max-width: 700px) {
+  .carousel__grid {
+    width: min(100%, 552px);
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    grid-template-areas:
+      "left card right"
+      ". flip .";
+    column-gap: 12px;
+  }
+
   .carousel__card {
-    width: min(440px, calc(100vw - 148px));
+    width: 100%;
+    min-width: 0;
     min-height: 240px;
     height: auto;
   }
@@ -127,7 +155,4 @@
     text-align: center;
   }
 
-  .carousel__row {
-    gap: 12px;
-  }
 }

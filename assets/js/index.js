@@ -57,6 +57,7 @@ const mainContent = document.querySelector("#page__main-content");
 const carouselView = document.querySelector(".carousel");
 const deckDetailView = document.querySelector("#deck-view");
 const notFoundView = document.querySelector("#not-found");
+const page = document.querySelector(".page");
 const practiceButton = deckDetailView.querySelector(".gallery__practice-btn");
 let currentDeck = null;
 
@@ -106,6 +107,12 @@ function renderRoute() {
   // A deck route is valid only if a valid deck was found.
   const showCarousel = isCarouselRoute && currentDeck;
   const showDeckView = isDeckRoute && currentDeck;
+
+  if (showCarousel || (!isHomeRoute && !showDeckView)) {
+    page.classList.add("page_no-mobile-bar");
+  } else if (isHomeRoute) {
+    page.classList.remove("page_no-mobile-bar");
+  }
 
   if (showCarousel) {
     mainContent.classList.add("page__main-content_location_carousel");
