@@ -1,25 +1,29 @@
-.mobile-bar {
-  display: none;
-}
-
 @media (max-width: 700px) {
-  .mobile-bar {
-    display: block;
+  .page::after {
+    content: "";
     position: fixed;
     z-index: 3;
     right: 0;
     bottom: 0;
     left: 0;
-    height: 140px;
+    height: 200px;
     background: linear-gradient(180deg, #ececec00 0%, #ececec 35%);
     pointer-events: none;
+  }
+
+  .footer {
+    position: fixed;
+    z-index: 5;
+    right: 20px;
+    bottom: 20px;
+    left: 20px;
   }
 
   .gallery_type_home .gallery__new-card-btn {
     position: fixed;
     z-index: 4;
     right: 20px;
-    bottom: 20px;
+    bottom: 80px;
     left: 20px;
     align-items: center;
     justify-content: center;
