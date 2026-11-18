@@ -19,18 +19,37 @@
     left: 20px;
   }
 
-  .gallery_type_home .gallery__new-card-btn {
+  .gallery__new-card-btn,
+  .gallery__practice-btn {
+    display: flex;
     position: fixed;
     z-index: 4;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    padding: 16px;
+    font-weight: 600;
+  }
+
+  .gallery .gallery__new-card-btn {
+    width: auto;
+    max-width: none;
+    right: 20px;
+    left: 20px;
+    bottom: 80px;
+    aspect-ratio: auto;
+  }
+
+  .gallery__practice-btn {
+    right: 20px;
+    bottom: 150px;
+    left: 20px;
+    margin-bottom: 0;
+  }
+
+  .gallery__new-card-btn_location_deck-view {
     right: 20px;
     bottom: 80px;
     left: 20px;
-    align-items: center;
-    justify-content: center;
-    width: auto;
-    height: 60px;
-    aspect-ratio: auto;
-    padding: 16px;
-    font-weight: 600;
   }
 }
