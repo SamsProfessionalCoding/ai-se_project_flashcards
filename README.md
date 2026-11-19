@@ -15,3 +15,8 @@ Javascript, HTML, CSS.
 ## Deployed Site
 
 Check out [this site](https://SamsProfessionalCoding.github.io/ai-se_project_flashcards) on GitHub Pages.
+
+## Project Pitch Video
+
+Check out [this video](https://drive.google.com/file/d/1F4037wxea79ttjdkuIzd0G51LgGeHY-L/view?usp=drive_link), where I describe my
+project and some challenges I faced while building it.
